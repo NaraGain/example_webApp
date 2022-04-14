@@ -16,7 +16,7 @@
 <div class = "text-success">{{session('status')}}</div>
 @endif
 <div>
-<button style="border-radius: 0px;" type="submit" class="btn btn-primary ">Post</button>
+<button style="border-radius: 0px;" type="submit" class="btn btn-primary btn-block ">Post</button>
 </div>
   </form>
 </div>

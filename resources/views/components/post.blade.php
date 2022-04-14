@@ -38,7 +38,7 @@ class="font-weight-bold display-5 text-dark my-1"
 @endif
 
 @if($post->EditOwnBy(auth()->user()))
- <a class = "p-1 my-1"
+ <a class = "p-1 my-1 text-dark"
   href="{{route('posts.showdata',$post->id)}}">
   Edite</a>
 @endif

@@ -53,6 +53,10 @@ class User extends Authenticatable
 
         
     }
+    public function OwnBy(User $user){
+        return $user->id == $this->user_id;
+      }
+    
     public function likes(){
         //Post::class is Post.php in models folder
         return $this->hasMany(likes::class);

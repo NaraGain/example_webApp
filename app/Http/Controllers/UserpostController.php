@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Auth;
 class UserpostController extends Controller
 {
   public function index(User $user){
-  
  $posts = $user->posts()->with(['user', 'likes']);
+
+
 
 
 
 return  view('layout.user',[
     'user'=>$user,
-    'posts' => $posts
+    'posts' => $posts,
+    
   
    
 ]);
@@ -28,20 +30,12 @@ return  view('layout.user',[
   }
 
   public function userProfile(){
-
-
-
  $user = Auth::user();
-  
  $post = Post::get()->where('user_id',$user->id);
-
-
-
-
- return view('layout.userProfile',[
-   'user' => $user,
-   'post' => $post
- ]);
+       return view('layout.userProfile',[
+             'user' => $user,
+          'post' => $post
+                     ]);
 
 
  

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\Post;
-
-
+use Prophecy\Doubler\LazyDouble;
 
 class PostController extends Controller
 {
@@ -23,7 +22,7 @@ class PostController extends Controller
      // the paginate method is use to collect post ex<1-2-3-4-next> page
      //Pagination can be described as a sequence of pages example blow
      // $posts = Post::paginate('number_here');
-     
+    
         return view('post.index',['posts'=>
         $posts]);
     }
@@ -31,6 +30,7 @@ class PostController extends Controller
     public function store(Request $request){
 
       // dd($request->user()->posts());
+    
 
         $this->validate($request,[
             'body'=>'required',
@@ -59,22 +59,31 @@ class PostController extends Controller
            'posts'=>$data
          ]);
 
-         
-      
-        }
+}
 
-        public function update(Request $request,$id, Post $posts){
+
+
+
+// public function selectOnly($id){
+// $post = Post::get()->where('user_id',$id);
+
+// dd($post);
+
+//   return back();
+// }
+
+
+
+    public function update(Request $request,$id, Post $posts){
            
- $request->validate([
-   'body' => 'required'
- ]);
+        $request->validate([
+           'body' => 'required'
+          ]);
 
- $posts->where('id',$id)->update([
-   'body'=> $request->body
- ]);
- return back()->with('status','update is successfuly');
+              $posts->where('id',$id)->update([
+              'body'=> $request->body
+                    ]);
+              return back()->with('status','update is successfuly');
               
-    }
-
-
+               }
 }

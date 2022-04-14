@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\PostlikeController;
 use App\Http\Controllers\UserpostController;
+use App\Http\Controllers\roomController;
 
 
 
@@ -46,10 +47,14 @@ Route::post('/posts',[PostController::class,'store'] )->name('posts');
 Route::delete('/posts/{post}',[PostController::class,'destory'])->name('posts.destory');
 Route::get('/update/{post:id}/posts',[postController::class,'showdata'])->name('posts.showdata');
 Route::put('/update/{post:id}/posts',[postController::class,'update'])->name('posts.update');
+//Route::get('/posts/{post:id}',[postController::class,'selectOnly'])->name('posts.showdata');
 
 Route::post('/posts/{post}/likes',[PostlikeController::class,'store'])->name('posts.like');
 Route::delete('/posts/{post:id}/likes',[PostlikeController::class,'destroy'])->name('posts.like');
 
-Route::get('start',[chatController::class,'start'])->name('start.message');
-Route::post('chat',[chatController::class,'index'])->name('chat');
-Route::post('chat/send',[chatController::class,'store'])->name('chat.store');
+Route::get('/chat/{user:id}',[chatController::class,'index'])->name('chat.page');
+Route::post('/chat/{user:id}',[chatController::class,'message'])->name('chat.page');
+
+Route::get('/chatlist',[roomController::class,'index'])->name('list');
+Route::delete('/chat/{message}',[chatController::class,'destory'])->name('chat.delete');
+

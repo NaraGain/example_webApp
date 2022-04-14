@@ -35,13 +35,16 @@
     <li class="nav-item active">
     <a style="color:white" class="nav-link" href="{{ route('posts') }}">Post</a>
     </li>
+    <li class="nav-item active">
+      <a class="nav-link text-white" href="{{route('list')}}">chat</a>
+    </li>
 </ul>
 <form>
 <input type="text" class="form-control" placeholder="Search" id="search">
 </form>
     <ul class="navbar-nav d-flex">
     @if(auth()->check())
-   
+    
     <li class="nav-item active">
     
 <a  class="nav-link" style="color:white;" href="{{route('userProfile')}}">{{auth()->user()->username}}</a>
@@ -55,12 +58,12 @@
         <button type="submit"class="btn text-white">logout</button> 
 </form>
     </li>
-    
+  
     @else
     <li class="nav-item active">
-      <a class="nav-link" href="{{ route('login') }}">Login</a>
+      <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item active text-white">
       <a class="nav-link" href="{{ route('register')}}">Register</a>
     </li>
     @endif
