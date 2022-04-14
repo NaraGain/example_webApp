@@ -24,7 +24,7 @@ foreach($clientName as $cl){
        'cname' =>$text
      ]);
   }
- 
+
 public function message(Request $request,$id){
 
 
