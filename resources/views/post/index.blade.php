@@ -9,7 +9,9 @@
     @csrf
     <div class="form-group">
      
-      <textarea class="form-control " style ="border-radius:0px;"rows="3" id="comment" name="body" placeholder="What happen today"></textarea>
+      <textarea class="form-control @error('body') border-red @enderror"
+       style ="border-radius:0px;"rows="3" id="comment"
+       name="body" placeholder="What happen today"></textarea>
     </div>
     @error('body')
     <div class="text-danger">{{$message}}</div>

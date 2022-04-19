@@ -52,9 +52,25 @@ Route::put('/update/{post:id}/posts',[postController::class,'update'])->name('po
 Route::post('/posts/{post}/likes',[PostlikeController::class,'store'])->name('posts.like');
 Route::delete('/posts/{post:id}/likes',[PostlikeController::class,'destroy'])->name('posts.like');
 
-Route::get('/chat/{user:id}',[chatController::class,'index'])->name('chat.page');
-Route::post('/chat/{user:id}',[chatController::class,'message'])->name('chat.page');
+Route::get('/message/{user:id}/room/{room:id}',[chatController::class,'index'])->name('chat.page');
+Route::post('/message/{user:id}/room/{room:id}',[chatController::class,'message'])->name('chat.page');
 
-Route::get('/chatlist',[roomController::class,'index'])->name('list');
 Route::delete('/chat/{message}',[chatController::class,'destory'])->name('chat.delete');
+Route::get('/chatlist',[roomController::class,'index'])->name('list');
 
+
+Route::get('/chat/createroom/{user:id}',
+[chatController::class,'createRoom'])->name('chat.new');
+Route::post('/chat/createroom/{user:id}',
+[chatController::class,'createRoom'])->name('chat.new');
+
+
+//use to group middleware routing in the same groud
+Route::middleware('auth')->group(function(){
+    Route::get('/test',function(){
+        return "Hello world";
+    });
+    Route::get('/good',function(){
+        return "Hello world good";
+    });
+});

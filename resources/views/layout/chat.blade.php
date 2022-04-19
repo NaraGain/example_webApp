@@ -1,10 +1,12 @@
 @extends('layout.app')
 @section('content')
 
-<div class="container p-3 my-3  text-dark">
+<div class="container text-dark">
 
-<h4>{{$cname}}</h4>
-<div class="container mt-3 p-1 border">
+<div class=" container bg-white p-3">
+<h4>{{$username}}</h4>
+</div>
+<div id ="box" class="container p-1 border overflow-auto" style="height:550px;">
   @foreach($mess as $messa)
   <div style="font-size:20px;" class="d-flex flex-row mb-1  text-dark @if($messa->OWnBy(auth()->user())) 
   d-flex flex-row-reverse @endif">
@@ -28,25 +30,33 @@
   @endforeach
 </div>
 @if($mess->count())
- <form  acton="{{route('chat.page',$user)}}" method="post">
+<div class="containerd" style="height: fit-content;">
+ <form  acton="{{route('chat.page',[$user,$room])}}" method="post" >
     @csrf
       <div class="d-flex flex-row">
-      <textarea class="form-control "placeholder="send message" style ="border-radius:0px;"rows="1 " name="body">
-    </textarea>
+      <textarea class="form-control" placeholder="send message" style ="border-radius:0px;"rows="2 " name="body"></textarea>
 @error('body')
 <div>{{$message}}</div>
 @enderror
-<button type="submit" class="btn btn-primary " style="border-radius:2px;">send</button>
+<input class="btn btn-info "  type ="submit" name="send" value="send" style="border-radius:2px; width:100px"/>
 </form>
 </div>
-@else
-<h4 class="text-muted my-2">No message available</h4>
-<form>
-  <button class="btn">Say Hi to {{$cname}}</button>
-</form>
- @endif
- 
+@endif
 
+@if(!$mess->count())
+<h4 class="text-muted my-2">No message available</h4>
+<form action="{{route('chat.new',[$user])}}" method="post">
+  @csrf
+<input class="btn btn-info btn-block" type="submit"  name="greeting" value="SayHi👏"/>
+</form>
+ @endif 
 
 </div>
 @endsection
+
+<!-- <script>
+
+  $(document).ready(function(){
+    $('#box').scroll(function)
+  })
+</script> -->

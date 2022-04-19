@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class roomController extends Controller
 {
     public function index(){
-        return view('layout.list');
+
+
+        $rooms = Room::get();
+       
+        
+        return view('layout.list',[
+
+          "room" => $rooms,
+     
+        ]);
     }
+
 
  
-
-    public function store(Request $request,$id){
-
-$room = Room::get();
-        dd($room);
-        return back();
-    }
 }

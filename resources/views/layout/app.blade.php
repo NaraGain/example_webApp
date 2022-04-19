@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!-- jQuery library -->
@@ -15,6 +16,11 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +70,7 @@
       <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
     </li>
     <li class="nav-item active text-white">
-      <a class="nav-link" href="{{ route('register')}}">Register</a>
+      <a class="nav-link text-white" href="{{ route('register')}}">Register</a>
     </li>
     @endif
   </ul>

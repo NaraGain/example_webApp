@@ -9,6 +9,11 @@ class Room extends Model
 {
     use HasFactory;
 
+protected $fillable = [
+    'title',
+    'reciverid'
+];
+
     public function message(){
         return $this->hasMany(message::class);
     }
